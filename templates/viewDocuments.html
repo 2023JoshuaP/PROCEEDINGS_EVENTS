@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Management</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            <li><a href="#" data-section="showDocuments">Inicio</a></li>
+            <li><a href="#" data-section="viewDocuments">Mis documentos</a></li>
+            <li><a href="#">Configuración</a></li>
+        </ul>
+        <div class="user-profile">
+            <p>User Profile</p>
+        </div>
+    </div>
+    <div class="main-content">
+        <div id="showDocuments" class="section">
+            <h1>Mostrar Documentos</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar...">
+                <button>🔍</button>
+            </div>
+            <div class="filters">
+                <span>Filtro: </span>
+                <select>
+                    <option value="all">Todos</option>
+                    <option value="pdf">PDF</option>
+                </select>
+                <select>
+                    <option value="all">Autor</option>
+                    <option value="author1">Autor 1</option>
+                    <option value="author2">Autor 2</option>
+                </select>
+                <select>
+                    <option value="all">Fecha de Publicación</option>
+                    <option value="date1">Fecha 1</option>
+                    <option value="date2">Fecha 2</option>
+                </select>
+            </div>
+            <div class="documents-grid">
+                <!-- Aquí irán los documentos -->
+                <div class="document-card"></div>
+                <div class="document-card"></div>
+                <div class="document-card"></div>
+                <div class="document-card"></div>
+                <div class="document-card"></div>
+                <div class="document-card"></div>
+            </div>
+            <div class="pagination">
+                <span>Página: </span>
+                <button>Inicio</button>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>Final</button>
+                <button>Siguiente</button>
+            </div>
+        </div>
+        
+        <div id="viewDocuments" class="section" style="display:none;">
+            <h1>Mis Documentos</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar...">
+                <button>🔍</button>
+            </div>
+            <div class="documents-grid">
+                <!-- Aquí irán los documentos -->
+                <div class="document-card"></div>
+                <div class="document-card"></div>
+                <div class="document-card"></div>
+                <div class="document-card"></div>
+                <div class="document-card"></div>
+                <div class="document-card"></div>
+            </div>
+            <div class="pagination">
+                <span>Página: </span>
+                <button>Inicio</button>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>Final</button>
+                <button>Siguiente</button>
+            </div>
+        </div>
+        
+        <div id="detailsDocuments" class="section" style="display:none;">
+            <h1>Detalles del Documento</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar...">
+                <button>🔍</button>
+            </div>
+            <div class="document-details">
+                <h2>Detalles del Documento</h2>
+                <p><strong>Título:</strong> Documento 1</p>
+                <p><strong>Autor:</strong> ----------------</p>
+                <p><strong>Área:</strong> ----------------</p>
+                <p><strong>Fecha de Publicación:</strong> DD/MM/AAAA</p>
+                <p><strong>Descripción:</strong></p>
+                <textarea></textarea>
+                <button>Visualizar</button>
+                <button>Descargar</button>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/script.js"></script>
+</body>
+</html>
