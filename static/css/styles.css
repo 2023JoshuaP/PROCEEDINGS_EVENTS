@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 200px;
+    float: left;
+    padding: 10px;
+    background-color: #f4f4f4;
+    height: 100vh;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: blue;
+    cursor: pointer;
+}
+
+.user-profile {
+    margin-top: 20px;
+    color: green;
+}
+
+.main-content {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    padding: 5px;
+    width: 300px;
+}
+
+.filters span {
+    margin-right: 10px;
+    color: red;
+}
+
+.documents-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.document-card {
+    width: 150px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination button {
+    margin-right: 5px;
+}
+
+.document-details {
+    padding: 10px;
+}
+
+.document-details textarea {
+    width: 100%;
+    height: 100px;
+    padding: 5px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
