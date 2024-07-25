@@ -56,6 +56,8 @@ Esto instalará Flask, MongoEngine y todas las demás dependencias necesarias pa
 
 ## Laboratorio 9 - Clean Code
 
+Rama de Desarrollo donde ver: **development**
+
 - **Prácticas usadas de Clean Code (JavaScript)**
 
 1. Como primera práctica de Clean Code es nombres claros y descriptivos, las funciones y las variables tienen una responsabilidad única cllaramente definida. Por ejemplo: **hideAllSections** tiene la función única de ocultar todas las secciones y **showSection** se encarga de mostrar una sección específica.
@@ -122,106 +124,3 @@ Unexpected duplicate selector ".sidebar", first used at line 5
 
 Anchor tags should not be used as buttons.
 Anchor tags should not be used as buttons.
-
-## Laboratorio 10 - SOLID
-
-Los principios solid usados son los siguientes
-
-1. **Single Responsibility Principle**
-
-Se establece que una clase debe tener una sola responsabilidad o razón para cambiar.
-
-	```plaintext
-	function hideAllSections() {
-		document.querySelectorAll('.section').forEach(section => {
-			section.style.display = 'none';
-		});
-	}
-
-	function showSection(sectionId) {
-		hideAllSections();
-		const section = document.getElementById(sectionId);
-		if (section) {
-			section.style.display = 'block';
-		} else {
-			console.error(`No se encontró la sección con ID: ${sectionId}`);
-		}
-	}
-	```
-
-2. **Open/Closed Principle**
-
-Se establece que las entidades de software deben estar abiertas para la extensión, pero cerradas para la modificación.
-
-	```plaintext
-	function getDocuments() {
-		return [
-			{ title: 'Documento 1', imageUrl: '../static/imagenes/imagen1.jpeg' },
-			{ title: 'Documento 2', imageUrl: '../static/imagenes/imagen2.png' },
-			{ title: 'Documento 3', imageUrl: '../static/imagenes/imagen3.jpeg' },
-			{ title: 'Documento 4', imageUrl: '../static/imagenes/imagen4.png' },
-			{ title: 'Documento 5', imageUrl: '../static/imagenes/imagen5.png' },
-			{ title: 'Documento 6', imageUrl: '../static/imagenes/imagen6.jpeg' },
-			{ title: 'Documento 7', imageUrl: '../static/imagenes/imagen7.jpeg' },
-			{ title: 'Documento 8', imageUrl: '../static/imagenes/imagen8.jpeg' },
-			{ title: 'Documento 9', imageUrl: '../static/imagenes/imagen9.jpeg' },
-			{ title: 'Documento 10', imageUrl: '../static/imagenes/imagen10.jpeg' }
-		];
-	}
-	```
-
-3. **Dependency Inversion Principle**
-
-Se establece que las clases de alto nivel no deben depender de clases de bajo nivel, ambas deben depender de abstracciones.
-
-	```plaintext
-		function getDocuments() {
-			return [
-				{ title: 'Documento 1', imageUrl: '../static/imagenes/imagen1.jpeg' },
-				{ title: 'Documento 2', imageUrl: '../static/imagenes/imagen2.png' },
-				{ title: 'Documento 3', imageUrl: '../static/imagenes/imagen3.jpeg' },
-				{ title: 'Documento 4', imageUrl: '../static/imagenes/imagen4.png' },
-				{ title: 'Documento 5', imageUrl: '../static/imagenes/imagen5.png' },
-				{ title: 'Documento 6', imageUrl: '../static/imagenes/imagen6.jpeg' },
-				{ title: 'Documento 7', imageUrl: '../static/imagenes/imagen7.jpeg' },
-				{ title: 'Documento 8', imageUrl: '../static/imagenes/imagen8.jpeg' },
-				{ title: 'Documento 9', imageUrl: '../static/imagenes/imagen9.jpeg' },
-				{ title: 'Documento 10', imageUrl: '../static/imagenes/imagen10.jpeg' }
-			];
-		}
-
-		function loadDocumentImages(sectionId, page = 1, pageSize = 5) {
-			const section = document.getElementById(sectionId);
-			const documentsGrid = section.querySelector('.documents-grid');
-			documentsGrid.innerHTML = '';
-
-			const documents = getDocuments(); // Abstracción de la fuente de datos
-			const start = (page - 1) * pageSize;
-			const end = start + pageSize;
-			const paginatedDocuments = documents.slice(start, end);
-
-			paginatedDocuments.forEach(doc => {
-				const card = document.createElement('div');
-				card.classList.add('document-card');
-				
-				const img = document.createElement('img');
-				img.src = doc.imageUrl;
-				img.alt = doc.title;
-				
-				const title = document.createElement('p');
-				title.textContent = doc.title;
-
-				card.appendChild(img);
-				card.appendChild(title);
-
-				// Añadir el manejador de eventos para hacer clic en la tarjeta
-				card.addEventListener('click', () => {
-					showDocumentDetails(doc);
-				});
-
-				documentsGrid.appendChild(card);
-			});
-
-			updatePagination(section, page, Math.ceil(documents.length / pageSize));
-		}
-		```
