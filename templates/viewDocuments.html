@@ -7,18 +7,21 @@
     <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
-    <div class="sidebar">
+    <header>
+        <h1>Document Management System</h1>
+    </header>
+    <nav class="sidebar">
         <ul>
             <li><a href="#" data-section="showDocuments">Inicio</a></li>
             <li><a href="#" data-section="viewDocuments">Mis documentos</a></li>
-            <li><a href="#">Configuración</a></li>
+            <li><a href="#" data-section="settings">Configuración</a></li>
         </ul>
         <div class="user-profile">
             <p>User Profile</p>
         </div>
-    </div>
-    <div class="main-content">
-        <div id="showDocuments" class="section">
+    </nav>
+    <main class="main-content">
+        <section id="showDocuments" class="section">
             <h1>Mostrar Documentos</h1>
             <div class="search-bar">
                 <input type="text" placeholder="Buscar...">
@@ -26,16 +29,16 @@
             </div>
             <div class="filters">
                 <span>Filtro: </span>
-                <select>
+                <select id="typeFilter">
                     <option value="all">Todos</option>
                     <option value="pdf">PDF</option>
                 </select>
-                <select>
+                <select id="authorFilter">
                     <option value="all">Autor</option>
                     <option value="author1">Autor 1</option>
                     <option value="author2">Autor 2</option>
                 </select>
-                <select>
+                <select id="dateFilter">
                     <option value="all">Fecha de Publicación</option>
                     <option value="date1">Fecha 1</option>
                     <option value="date2">Fecha 2</option>
@@ -43,12 +46,6 @@
             </div>
             <div class="documents-grid">
                 <!-- Aquí irán los documentos -->
-                <div class="document-card"></div>
-                <div class="document-card"></div>
-                <div class="document-card"></div>
-                <div class="document-card"></div>
-                <div class="document-card"></div>
-                <div class="document-card"></div>
             </div>
             <div class="pagination">
                 <span>Página: </span>
@@ -60,9 +57,9 @@
                 <button>Final</button>
                 <button>Siguiente</button>
             </div>
-        </div>
+        </section>
         
-        <div id="viewDocuments" class="section" style="display:none;">
+        <section id="viewDocuments" class="section" style="display:none;">
             <h1>Mis Documentos</h1>
             <div class="search-bar">
                 <input type="text" placeholder="Buscar...">
@@ -70,12 +67,6 @@
             </div>
             <div class="documents-grid">
                 <!-- Aquí irán los documentos -->
-                <div class="document-card"></div>
-                <div class="document-card"></div>
-                <div class="document-card"></div>
-                <div class="document-card"></div>
-                <div class="document-card"></div>
-                <div class="document-card"></div>
             </div>
             <div class="pagination">
                 <span>Página: </span>
@@ -87,9 +78,9 @@
                 <button>Final</button>
                 <button>Siguiente</button>
             </div>
-        </div>
+        </section>
         
-        <div id="detailsDocuments" class="section" style="display:none;">
+        <section id="detailsDocuments" class="section" style="display:none;">
             <h1>Detalles del Documento</h1>
             <div class="search-bar">
                 <input type="text" placeholder="Buscar...">
@@ -97,17 +88,39 @@
             </div>
             <div class="document-details">
                 <h2>Detalles del Documento</h2>
-                <p><strong>Título:</strong> Documento 1</p>
-                <p><strong>Autor:</strong> ----------------</p>
-                <p><strong>Área:</strong> ----------------</p>
-                <p><strong>Fecha de Publicación:</strong> DD/MM/AAAA</p>
+                <p><strong>Título:</strong> <span strong-title>Documento 1</span></p>
+                <p><strong>Autor:</strong> <span strong-author>----------------</span></p>
+                <p><strong>Área:</strong> <span strong-area>----------------</span></p>
+                <p><strong>Fecha de Publicación:</strong> <span strong-date>DD/MM/AAAA</span></p>
                 <p><strong>Descripción:</strong></p>
                 <textarea></textarea>
                 <button>Visualizar</button>
                 <button>Descargar</button>
+                <button id="backToDocumentsButton">Regresar</button>
             </div>
-        </div>
-    </div>
+        </section>
+
+        <section id="settings" class="section" style="display:none;">
+            <h1>Configuración</h1>
+            <div class="settings-form">
+                <h2>Preferencias de Usuario</h2>
+                <label for="username">Nombre de usuario:</label>
+                <input type="text" id="username" name="username">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email">
+                <label for="language">Idioma:</label>
+                <select id="language" name="language">
+                    <option value="en">Inglés</option>
+                    <option value="es">Español</option>
+                    <!-- Otros idiomas -->
+                </select>
+                <button id="saveSettingsButton">Guardar Cambios</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Document Management System</p>
+    </footer>
     <script src="../static/js/script.js"></script>
 </body>
 </html>

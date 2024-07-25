@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from mongoengine import connect
 from app.infraestructura.repositorio.mongoDB import DocumentoRepositorioImpl
 from app.infraestructura.repositorio.mongoDB.autor_repositorio_impl import AutorRepositorioImpl
@@ -49,6 +49,16 @@ def eliminar_documento(id):
         return jsonify({"error": "Documento no encontrado"}), 404
 
 # Rutas para otros CRUDs
+
+@app.route('/')
+def show_documents():
+    return render_template('viewDocuments.html')
+
+@app.route('/documento/<id>')
+def document_details(id):
+    # Aquí puedes obtener los detalles del documento utilizando el ID
+    # por ahora vamos a mostrar una página de detalles estática
+    return render_template('detailsDocument.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
