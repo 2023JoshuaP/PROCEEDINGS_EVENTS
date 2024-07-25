@@ -62,9 +62,71 @@ Rama de Desarrollo donde ver: **development**
 
 1. Como primera práctica de Clean Code es nombres claros y descriptivos, las funciones y las variables tienen una responsabilidad única cllaramente definida. Por ejemplo: **hideAllSections** tiene la función única de ocultar todas las secciones y **showSection** se encarga de mostrar una sección específica.
 
+```plaintext
+	function hideAllSections() {
+		document.querySelectorAll('.section').forEach(section => {
+			section.style.display = 'none';
+		});
+	}
+
+	function showSection(sectionId) {
+		hideAllSections();
+		const section = document.getElementById(sectionId);
+		if (section) {
+			section.style.display = 'block';
+		} else {
+			console.error(`No se encontró la sección con ID: ${sectionId}`);
+		}
+	}
+```
+
 2. Como segunda práctica es evitar la duplicación del código, se evita la duplicación de código al momento de reutilizar las funciones de **hideAllSections** y de **ShowSection** en lugar de tener lógica duplicada.
 
+```plaintext
+	function hideAllSections() {
+		document.querySelectorAll('.section').forEach(section => {
+			section.style.display = 'none';
+		});
+	}
+
+	function showSection(sectionId) {
+		hideAllSections();
+		const section = document.getElementById(sectionId);
+		if (section) {
+			section.style.display = 'block';
+		} else {
+			console.error(`No se encontró la sección con ID: ${sectionId}`);
+		}
+	}
+```
+
 3. Como tercera práctica es usar nombres explicativos, usar los nombres explicativos ayuda al entendimiento de cada parte del código sin necesidad de comentarios adicionales.
+
+```plaintext
+function initializeApp() {
+    document.querySelectorAll('.sidebar a').forEach(link => {
+        link.addEventListener('click', event => {
+            event.preventDefault();
+            const sectionId = link.getAttribute('data-section');
+            showSection(sectionId);
+            if (sectionId === 'showDocuments' || sectionId === 'viewDocuments') {
+                loadDocumentImages(sectionId);
+            }
+        });
+    });
+
+    document.getElementById('saveSettingsButton').addEventListener('click', validateAndSaveSettings);
+
+    // Añadir el manejador de eventos para el botón de regreso
+    document.getElementById('backToDocumentsButton').addEventListener('click', () => {
+        showSection('showDocuments');
+        loadDocumentImages('showDocuments');
+    });
+
+    showSection('showDocuments');
+    loadDocumentImages('showDocuments');
+}
+```
 
 - **Reporte de SonarLint**
 
