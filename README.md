@@ -322,7 +322,7 @@ Este estilo es referente a escribir código como recetas reutilizables, en la es
 	});
 	```
 
-3. **Error/Exceptio Handling**
+3. **Error/Exception Handling**
 
 No se maneja explicitamente en el código, en el estado **status** con los valores loading, success y error sugiere el manejo de los errores.
 
