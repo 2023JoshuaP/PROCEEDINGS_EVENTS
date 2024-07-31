@@ -289,3 +289,51 @@ Se establece que las clases de alto nivel no deben depender de clases de bajo ni
 			updatePagination(section, page, Math.ceil(documents.length / pageSize));
 		}
 		```
+
+## Laboratorio 11 - Estilos de Programación
+
+Los estilos de programación usados son los siguientes:
+
+1. **Pipeline**
+
+El uso de operadores como **switchMap** y **map** permiten transformar y manipular flujos de datos.
+
+	```plaintext
+	getById: (_state, $: Observable<string>) => $.pipe(
+		switchMap((id) => this.documentsService.getDocument(id)),
+		map(data => ({ documents: data, status: 'success' as const })),
+	)
+	```
+
+2. **Cookbook**
+
+Este estilo es referente a escribir código como recetas reutilizables, en la estructura del bloque **beforeEach** es una receta para configurar el entorno de pruebas y este patrón podrá ser reutilizado para cualquier componente cambiando el nombre del componente en **TestBed.configureTestingModule** y **TestBed.createComponent**.
+
+	```plaintext
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
+			imports: [DocumentsCardComponent]
+		})
+		.compileComponents();
+
+		fixture = TestBed.createComponent(DocumentsCardComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
+	```
+
+3. **Error/Exceptio Handling**
+
+No se maneja explicitamente en el código, en el estado **status** con los valores loading, success y error sugiere el manejo de los errores.
+
+	```plaintext
+	interface State {
+		documents: Documents | null;
+		status: 'loading' | 'success' | 'error';
+	}
+
+	private initialState: State = {
+		documents: null,
+		status: 'loading' as const,
+	};
+	```
