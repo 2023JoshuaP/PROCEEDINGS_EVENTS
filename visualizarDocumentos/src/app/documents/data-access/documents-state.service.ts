@@ -2,7 +2,7 @@ import { inject, Injectable } from "@angular/core";
 import { Document } from "../../shared/interfaces/document.interface";
 import { signalSlice } from "ngxtension/signal-slice";
 import { DocumentService } from "./documents.service";
-import { map, startWith, Subject, switchMap } from "rxjs";
+import { catchError, map, of, startWith, Subject, switchMap } from "rxjs";
 
 interface State {
     documents: Document[];
@@ -25,7 +25,13 @@ export class DocumentsStateService {
     loadDocuments$ = this.changePage$.pipe(
         startWith(1),
         switchMap((page) => this.documentsService.getDocuments(page)),
-        map((documents) => ({ documents, status: 'success' as const }))
+        map((documents) => ({ documents, status: 'success' as const })),
+        catchError(() => {
+            return of({
+                documents: [],
+                status: 'error' as const,
+            });
+        }),
     );
 
     state = signalSlice({

@@ -17,4 +17,8 @@ export class DocumentService extends BaseHttpService{
             },
         });
     }
+
+    getDocument(id: string): Observable<Document> {
+        return this.http.get<Document>(`${this.apiUrl}/products/${id}`);
+    }
 }
